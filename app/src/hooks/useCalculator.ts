@@ -174,27 +174,12 @@ export function useCalculator() {
     setState(initialState);
   }, []);
 
-  const clearEntry = useCallback(() => {
-    setIsError(false);
-    setState(prev => ({ ...prev, display: '0', shouldResetDisplay: false }));
-  }, []);
-
   const deleteLast = useCallback(() => {
     setIsError(false);
     setState(prev => {
       if (prev.waitingForOperand || prev.shouldResetDisplay) return prev;
       if (prev.display.length === 1) return { ...prev, display: '0' };
       return { ...prev, display: prev.display.slice(0, -1) };
-    });
-  }, []);
-
-  const toggleSign = useCallback(() => {
-    setState(prev => {
-      if (prev.display === '0' || prev.display === 'Error') return prev;
-      if (prev.display.startsWith('-')) {
-        return { ...prev, display: prev.display.slice(1) };
-      }
-      return { ...prev, display: '-' + prev.display };
     });
   }, []);
 
@@ -265,15 +250,6 @@ export function useCalculator() {
 
   const clearHistory = useCallback(() => setHistory([]), []);
 
-  const handleParenthesis = useCallback((paren: string) => {
-    setState(prev => {
-      if (paren === '(') {
-        return { ...prev, display: '(', shouldResetDisplay: false };
-      }
-      return { ...prev, display: prev.display + ')' };
-    });
-  }, []);
-
   return {
     display: state.display,
     expression: state.expression,
@@ -286,9 +262,7 @@ export function useCalculator() {
     inputOperator,
     performCalculation,
     clear,
-    clearEntry,
     deleteLast,
-    toggleSign,
     inputPercent,
     scientificFunction,
     memoryClear,
@@ -297,7 +271,7 @@ export function useCalculator() {
     memorySubtract,
     memoryStore,
     clearHistory,
-    handleParenthesis,
     setIsScientific,
   };
 }
+

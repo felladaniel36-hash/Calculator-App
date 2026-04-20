@@ -10,8 +10,6 @@ import {
   Sun,
   Volume2,
   VolumeX,
-  Music,
-  Music2,
   FlaskConical,
   ChevronUp,
   ChevronDown,
@@ -53,7 +51,6 @@ export default function Calculator({ isDark, onToggleTheme }: CalculatorProps) {
   } = useCalculator();
 
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [musicEnabled, setMusicEnabled] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
 
   const { playClick, playOperator, playEquals, playClear, playError, playDelete } = useSound(soundEnabled);
@@ -99,10 +96,6 @@ export default function Calculator({ isDark, onToggleTheme }: CalculatorProps) {
         e.preventDefault();
         playClear();
         clear();
-      } else if (key === '(' || key === ')') {
-        e.preventDefault();
-        playClick();
-        // Simple parenthesis handling
       }
     };
 
@@ -343,21 +336,6 @@ export default function Calculator({ isDark, onToggleTheme }: CalculatorProps) {
                 title={soundEnabled ? 'Sound on' : 'Sound off'}
               >
                 {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.85 }}
-                onClick={() => {
-                  playClick();
-                  setMusicEnabled(!musicEnabled);
-                }}
-                className={`p-2.5 rounded-full transition-colors ${
-                  musicEnabled ? 'text-amber-300 hover:text-amber-200 hover:bg-white/15' : 'text-white/30 hover:text-white/50 hover:bg-white/10'
-                }`}
-                title={musicEnabled ? 'Music on' : 'Music off'}
-              >
-                {musicEnabled ? <Music className="w-4 h-4" /> : <Music2 className="w-4 h-4" />}
               </motion.button>
 
               <motion.button
