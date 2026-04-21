@@ -7,11 +7,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/huncho-dev/calcflow-calculator"
+    "url": "https://github.com/felladaniel36-hash/Calculator-App"
   },
-  "homepage": "https://calcflow.huncho.dev",
+  "homepage": "https://calculator-app-xhil.vercel.app",
   "bugs": {
-    "url": "https://github.com/huncho-dev/calcflow-calculator/issues"
+    "url": "https://github.com/felladaniel36-hash/Calculator-App/issues"
   },
   "keywords": ["calculator", "react", "typescript", "vite", "scientific-calculator", "glass-morphism"],
   "license": "MIT",
